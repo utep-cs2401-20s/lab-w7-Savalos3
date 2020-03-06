@@ -1,14 +1,14 @@
 public class SortOfSort {
 
     public static int[] sortOfSort(int [] set){
-        int n = set.length;
+        int n = set.length; //Used to determine length of array.
         int left = 0; //controls where to start search when going through array.
         int right = set.length-1; //controls where to end search when going through array
 
         for(int i = set.length-1; i >= 0; i--){
 
-            int max = right;
-            if(i%n == n-1  || i % n == n-2 )  {
+            int max = right; //right bound of array.
+            if(i%n == n-1  || i % n == n-2 )  { // only runs this conditional on the first 2 positions before length of array.
                 for (int j = right - 1; j >= left; j--) {
                     if (set[j] > set[max]) {
                         max = j;
@@ -18,11 +18,9 @@ public class SortOfSort {
                 set[max] = set[right];
                 set[right] = temp;
                 right--;
-                if(left == right ){ //ends when the ends meet.
-                    return set;
-                }
-            }else{
-                max = left;
+
+            }else{ //runs on the 3rd and 4th position before length of array.
+                max = left; //left bound of array.
                   for (int j = left + 1; j < right+1; j++) {
                       if (set[j] > set[max]) {
                           max = j;
@@ -35,9 +33,7 @@ public class SortOfSort {
                 set[max] = set[left];
                 set[left] = temp;
                 left++;
-                if(left == right){ //ends when the ends meet.
-                    return set;
-                }
+
             }
 
             }
